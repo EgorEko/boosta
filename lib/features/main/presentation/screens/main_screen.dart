@@ -10,6 +10,8 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Center(child: Container()));
+    return Scaffold(
+      body: Center(child: Container(color: Colors.pink)),
+    );
   }
 }
