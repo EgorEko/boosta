@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../blocs/app_settings_cubit/app_settings_cubit.dart';
+import '../../blocs/app_settings_cubit/app_settings_cubit.dart';
 
 class GlobalBlocProvider extends StatelessWidget {
   const GlobalBlocProvider({

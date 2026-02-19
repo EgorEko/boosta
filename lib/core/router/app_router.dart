@@ -9,7 +9,7 @@ import 'app_routes.dart';
 
 final GoRouter appRouter = GoRouter(
   initialLocation: AppRoutes.splash.path,
-  redirect: (context, state) async {
+  redirect: (context, state) {
     final isFirstRun = context.read<AppSettingsCubit>().isFirstRun;
 
     if (!isFirstRun && state.matchedLocation == AppRoutes.onboarding.path) {

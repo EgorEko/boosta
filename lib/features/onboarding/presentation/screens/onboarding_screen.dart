@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/blocs/app_settings_cubit/app_settings_cubit.dart';
+import '../../../../core/common/utils/extensions.dart';
 import '../../../../core/router/app_routes.dart';
 
 class OnboardingScreen extends StatelessWidget {
@@ -19,7 +20,7 @@ class OnboardingScreen extends StatelessWidget {
               context.go(AppRoutes.main.path);
             }
           },
-          child: Text('Apply for a Loan'),
+          child: Text(context.locale!.applyForALoan),
         ),
       ),
     );
