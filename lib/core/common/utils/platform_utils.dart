@@ -1,10 +1,9 @@
-
 import 'dart:io';
 import 'dart:ui';
 
 class PlatformUtils {
-  static Size getScreenSize(){
-   final isAndroid = Platform.isAndroid;
+  static Size getScreenSize() {
+    final isAndroid = Platform.isAndroid;
     switch (isAndroid) {
       case true:
         return Size(1080, 1920);
