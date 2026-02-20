@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
@@ -25,11 +26,25 @@ final GoRouter appRouter = GoRouter(
     ),
     GoRoute(
       path: AppRoutes.main.path,
-      builder: (context, state) => const MainScreen(),
+      pageBuilder: (context, state) => CustomTransitionPage(
+        key: state.pageKey,
+        child: const MainScreen(),
+        transitionsBuilder: (context, animation, secondary, child) {
+          return FadeTransition(opacity: animation, child: child);
+        },
+        transitionDuration: const Duration(milliseconds: 300),
+      ),
     ),
     GoRoute(
       path: AppRoutes.onboarding.path,
-      builder: (context, state) => const OnboardingScreen(),
+      pageBuilder: (context, state) => CustomTransitionPage(
+        key: state.pageKey,
+        child: const OnboardingScreen(),
+        transitionsBuilder: (context, animation, secondary, child) {
+          return FadeTransition(opacity: animation, child: child);
+        },
+        transitionDuration: const Duration(milliseconds: 300),
+      ),
     ),
   ],
 );

@@ -42,7 +42,13 @@ class _SplashScreenState extends State<SplashScreen> {
               width: double.infinity,
               height: double.infinity,
             ),
-            Center(child: Image.asset(Assets.icons.appStoreIcon.path)),
+            Center(
+              child: Image.asset(
+                Assets.icons.appStoreIcon.path,
+                width: double.infinity,
+                height: double.infinity,
+              ),
+            ),
           ],
         ),
       ),

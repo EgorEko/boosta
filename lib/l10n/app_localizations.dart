@@ -99,6 +99,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Apply for a Loan'**
   String get applyForALoan;
+
+  /// No description provided for @approvals.
+  ///
+  /// In en, this message translates to:
+  /// **'Approvals'**
+  String get approvals;
+
+  /// No description provided for @begin.
+  ///
+  /// In en, this message translates to:
+  /// **'Begin'**
+  String get begin;
+
+  /// No description provided for @continueButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get continueButton;
+
+  /// No description provided for @fast.
+  ///
+  /// In en, this message translates to:
+  /// **'Fast'**
+  String get fast;
+
+  /// No description provided for @setup.
+  ///
+  /// In en, this message translates to:
+  /// **'Setup'**
+  String get setup;
+
+  /// No description provided for @sloganFirst.
+  ///
+  /// In en, this message translates to:
+  /// **'Get approved in a flash.\nNo long waits.'**
+  String get sloganFirst;
+
+  /// No description provided for @sloganSecond.
+  ///
+  /// In en, this message translates to:
+  /// **'Just a few steps to\ncomplete your setup.'**
+  String get sloganSecond;
+
+  /// No description provided for @sloganThird.
+  ///
+  /// In en, this message translates to:
+  /// **'Your loan application\nis just a click away.'**
+  String get sloganThird;
+
+  /// No description provided for @speedy.
+  ///
+  /// In en, this message translates to:
+  /// **'Speedy'**
+  String get speedy;
+
+  /// No description provided for @today.
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get today;
 }
 
 class _AppLocalizationsDelegate

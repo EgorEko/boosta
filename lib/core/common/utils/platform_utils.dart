@@ -6,9 +6,9 @@ class PlatformUtils {
     final isAndroid = Platform.isAndroid;
     switch (isAndroid) {
       case true:
-        return Size(1080, 1920);
+        return Size(360, 640);
       case false:
-        return Size(1290, 2796);
+        return Size(430, 932);
     }
   }
 }
