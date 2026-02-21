@@ -18,10 +18,28 @@ class AppLocalizationsEn extends AppLocalizations {
   String get begin => 'Begin';
 
   @override
+  String get builtInSecurity => 'Built-In Security';
+
+  @override
   String get continueButton => 'Continue';
 
   @override
+  String get customAmounts => 'Custom Amounts';
+
+  @override
+  String get dataSecurity => 'Data Security';
+
+  @override
   String get fast => 'Fast';
+
+  @override
+  String get fastPayouts => 'Fast Payouts';
+
+  @override
+  String get loans => 'Loans';
+
+  @override
+  String get noExtraCharges => 'no extra Charges';
 
   @override
   String get setup => 'Setup';

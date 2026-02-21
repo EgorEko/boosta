@@ -14,6 +14,7 @@ class BoostaApp extends StatelessWidget {
     return ScreenUtilInit(
       designSize: PlatformUtils.getScreenSize(),
       minTextAdapt: true,
+      splitScreenMode: true,
       child: MaterialApp.router(
         routerConfig: appRouter,
         title: 'Boosta test project',

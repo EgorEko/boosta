@@ -112,17 +112,53 @@ abstract class AppLocalizations {
   /// **'Begin'**
   String get begin;
 
+  /// No description provided for @builtInSecurity.
+  ///
+  /// In en, this message translates to:
+  /// **'Built-In Security'**
+  String get builtInSecurity;
+
   /// No description provided for @continueButton.
   ///
   /// In en, this message translates to:
   /// **'Continue'**
   String get continueButton;
 
+  /// No description provided for @customAmounts.
+  ///
+  /// In en, this message translates to:
+  /// **'Custom Amounts'**
+  String get customAmounts;
+
+  /// No description provided for @dataSecurity.
+  ///
+  /// In en, this message translates to:
+  /// **'Data Security'**
+  String get dataSecurity;
+
   /// No description provided for @fast.
   ///
   /// In en, this message translates to:
   /// **'Fast'**
   String get fast;
+
+  /// No description provided for @fastPayouts.
+  ///
+  /// In en, this message translates to:
+  /// **'Fast Payouts'**
+  String get fastPayouts;
+
+  /// No description provided for @loans.
+  ///
+  /// In en, this message translates to:
+  /// **'Loans'**
+  String get loans;
+
+  /// No description provided for @noExtraCharges.
+  ///
+  /// In en, this message translates to:
+  /// **'no extra Charges'**
+  String get noExtraCharges;
 
   /// No description provided for @setup.
   ///

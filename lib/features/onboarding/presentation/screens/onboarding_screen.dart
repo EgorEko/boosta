@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -107,10 +108,12 @@ class _OnboardingScreenContentState extends State<OnboardingScreenContent>
     return Scaffold(
       body: BGWidget(
         child: SafeArea(
-          child: Center(
-            child: BlocBuilder<PageViewCubit, int>(
-              builder: (context, state) {
-                return Column(
+          child: BlocBuilder<PageViewCubit, int>(
+            builder: (context, state) {
+              return Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.w),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Expanded(
                       child: Stack(
@@ -140,15 +143,7 @@ class _OnboardingScreenContentState extends State<OnboardingScreenContent>
                                       1.0,
                                     );
                                   }
-                                  return Opacity(
-                                    opacity: value,
-                                    child: Transform.scale(
-                                      scale: 0.9 + (value * 0.1),
-                                      child: SingleChildScrollView(
-                                        child: pages[index],
-                                      ),
-                                    ),
-                                  );
+                                  return pages[index];
                                 },
                               );
                             },
@@ -171,9 +166,9 @@ class _OnboardingScreenContentState extends State<OnboardingScreenContent>
                       ),
                     ),
                   ],
-                );
-              },
-            ),
+                ),
+              );
+            },
           ),
         ),
       ),

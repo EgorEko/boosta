@@ -25,6 +25,14 @@ class $AssetsElementsGen {
   AssetGenImage get checkmark =>
       const AssetGenImage('assets/elements/checkmark.png');
 
+  /// File path: assets/elements/fluent_data_pie_24_regular.png
+  AssetGenImage get fluentDataPie24Regular =>
+      const AssetGenImage('assets/elements/fluent_data_pie_24_regular.png');
+
+  /// File path: assets/elements/fluent_money_16_filled.png
+  AssetGenImage get fluentMoney16Filled =>
+      const AssetGenImage('assets/elements/fluent_money_16_filled.png');
+
   /// File path: assets/elements/fluying_dol.png
   AssetGenImage get fluyingDol =>
       const AssetGenImage('assets/elements/fluying_dol.png');
@@ -45,8 +53,20 @@ class $AssetsElementsGen {
   AssetGenImage get lightningSecond =>
       const AssetGenImage('assets/elements/lightning_second.png');
 
+  /// File path: assets/elements/mdi_clock_fast.png
+  AssetGenImage get mdiClockFast =>
+      const AssetGenImage('assets/elements/mdi_clock_fast.png');
+
+  /// File path: assets/elements/mingcute_safe_lock_line.png
+  AssetGenImage get mingcuteSafeLockLine =>
+      const AssetGenImage('assets/elements/mingcute_safe_lock_line.png');
+
   /// File path: assets/elements/net.svg
   SvgGenImage get net => const SvgGenImage('assets/elements/net.svg');
+
+  /// File path: assets/elements/no_internet.png
+  AssetGenImage get noInternet =>
+      const AssetGenImage('assets/elements/no_internet.png');
 
   /// File path: assets/elements/portal.png
   AssetGenImage get portal => const AssetGenImage('assets/elements/portal.png');
@@ -63,6 +83,10 @@ class $AssetsElementsGen {
   AssetGenImage get portraitGirl1 =>
       const AssetGenImage('assets/elements/portrait_girl_1.png');
 
+  /// File path: assets/elements/portrait_no_internet.png
+  AssetGenImage get portraitNoInternet =>
+      const AssetGenImage('assets/elements/portrait_no_internet.png');
+
   /// File path: assets/elements/smile.png
   AssetGenImage get smile => const AssetGenImage('assets/elements/smile.png');
 
@@ -70,16 +94,22 @@ class $AssetsElementsGen {
   List<dynamic> get values => [
     arrow3,
     checkmark,
+    fluentDataPie24Regular,
+    fluentMoney16Filled,
     fluyingDol,
     flyingDolBack,
     flyingHundredUsDollar,
     lightning,
     lightningSecond,
+    mdiClockFast,
+    mingcuteSafeLockLine,
     net,
+    noInternet,
     portal,
     portrait,
     portraitGirl,
     portraitGirl1,
+    portraitNoInternet,
     smile,
   ];
 }
@@ -91,8 +121,16 @@ class $AssetsIconsGen {
   AssetGenImage get appStoreIcon =>
       const AssetGenImage('assets/icons/app_store_icon.png');
 
+  /// File path: assets/icons/info_icon.png
+  AssetGenImage get infoIcon =>
+      const AssetGenImage('assets/icons/info_icon.png');
+
+  /// File path: assets/icons/security.png
+  AssetGenImage get security =>
+      const AssetGenImage('assets/icons/security.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [appStoreIcon];
+  List<AssetGenImage> get values => [appStoreIcon, infoIcon, security];
 }
 
 class Assets {
