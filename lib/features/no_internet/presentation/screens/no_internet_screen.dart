@@ -51,7 +51,7 @@ class _NoInternetScreenContentState extends State<NoInternetScreenContent> {
                 PrimaryButton(
                   onPressed: () {},
                   child: Text(
-                    'Try again'.toUpperCase(),
+                    context.locale!.tryAgain.toUpperCase(),
                     style: AppTextStyles.buttonFont.copyWith(
                       color: AppColors.black,
                     ),

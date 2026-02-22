@@ -7,7 +7,9 @@ extension BuildContextHelper on BuildContext {
 
   double get getWidth => MediaQuery.of(this).size.width;
 
-  double get isKeyboardVisible => MediaQuery.of(this).viewInsets.bottom;
+  double get keyboardHeight => MediaQuery.of(this).viewInsets.bottom;
+
+  bool get isKeyboardVisible => keyboardHeight > 0;
 
   AppLocalizations? get locale => AppLocalizations.of(this);
 

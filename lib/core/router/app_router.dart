@@ -1,7 +1,9 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
+import '../../features/main/presentation/screens/hidden_web_view_screen.dart';
 import '../../features/main/presentation/screens/main_screen.dart';
 import '../../features/no_internet/presentation/screens/no_internet_screen.dart';
 import '../../features/onboarding/presentation/screens/onboarding_screen.dart';
@@ -57,6 +59,21 @@ final GoRouter appRouter = GoRouter(
         },
         transitionDuration: const Duration(milliseconds: 300),
       ),
+    ),
+    GoRoute(
+      path: AppRoutes.hiddenForm.path,
+      pageBuilder: (context, state) {
+        final controller = state.extra as WebViewController;
+
+        return CustomTransitionPage(
+          opaque: false,
+          barrierColor: Colors.transparent,
+          transitionDuration: Duration.zero,
+          reverseTransitionDuration: Duration.zero,
+          child: HiddenWebViewScreen(controller: controller),
+          transitionsBuilder: (_, _, _, child) => child,
+        );
+      },
     ),
   ],
 );

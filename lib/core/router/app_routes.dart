@@ -1,5 +1,6 @@
 enum AppRoutes {
   main(path: '/'),
+  hiddenForm(path: '/hiddenForm'),
   noInternet(path: '/noInternet'),
   onboarding(path: '/onboarding'),
   splash(path: '/splash');
