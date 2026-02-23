@@ -48,10 +48,13 @@ class OnboardingBodyWidget extends StatelessWidget {
             ),
           ),
           8.verticalSpace,
-          Text(
-            secondTitle.toUpperCase(),
-            style: AppTextStyles.primaryFont.copyWith(
-              color: isReverse ? AppColors.primaryColor : AppColors.white,
+          FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(
+              secondTitle.toUpperCase(),
+              style: AppTextStyles.primaryFont.copyWith(
+                color: isReverse ? AppColors.primaryColor : AppColors.white,
+              ),
             ),
           ),
           16.verticalSpace,

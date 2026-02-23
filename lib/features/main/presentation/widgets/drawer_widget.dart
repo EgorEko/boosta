@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/common/utils/extensions.dart';
+import '../../../../core/common/utils/screen_utils.dart';
 import '../../../../core/common/widgets/buttons/icons_button.dart';
 import '../../../../core/router/app_routes.dart';
 import '../../../../core/theme/app_colors.dart';
@@ -14,6 +15,7 @@ class DrawerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
+      width: ScreenUtils.getDrawerWidth(context),
       child: SafeArea(
         child: ListView(
           padding: EdgeInsets.zero,

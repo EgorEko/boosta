@@ -22,11 +22,13 @@ class ScreenUtils {
   }
 
   static double getDrawerWidth(BuildContext context) {
-    switch (context.getWidth) {
-      case > 900:
-        return 0.3;
+    final screenWidth = context.getWidth;
+
+    switch (screenWidth) {
+      case >= 900:
+        return 420;
       default:
-        return 0.5;
+        return screenWidth * 0.85;
     }
   }
 }
