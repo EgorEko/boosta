@@ -21,6 +21,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get builtInSecurity => 'Built-In Security';
 
   @override
+  String get connectionStillMissing => 'Connection still missing';
+
+  @override
   String get continueButton => 'Continue';
 
   @override

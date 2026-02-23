@@ -118,6 +118,12 @@ abstract class AppLocalizations {
   /// **'Built-In Security'**
   String get builtInSecurity;
 
+  /// No description provided for @connectionStillMissing.
+  ///
+  /// In en, this message translates to:
+  /// **'Connection still missing'**
+  String get connectionStillMissing;
+
   /// No description provided for @continueButton.
   ///
   /// In en, this message translates to:

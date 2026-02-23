@@ -1,3 +1,4 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -12,6 +13,7 @@ import '../../features/services/presentation/screens/terms_of_service.dart';
 import '../../features/splash/presentation/screens/splash_screen.dart';
 import '../blocs/app_settings_cubit/app_settings_cubit.dart';
 import '../blocs/device_id_cubit/device_id_cubit.dart';
+import '../common/utils/extensions.dart';
 import 'app_routes.dart';
 
 class CubitRefreshStream extends ChangeNotifier {
@@ -90,13 +92,21 @@ GoRouter createRouter({required DeviceIdCubit deviceIdCubit}) {
       ),
       GoRoute(
         path: AppRoutes.noInternet.path,
-        pageBuilder: (context, state) => CustomTransitionPage(
-          key: state.pageKey,
-          child: const NoInternetScreen(),
-          transitionsBuilder: (context, animation, secondary, child) {
-            return FadeTransition(opacity: animation, child: child);
+        builder: (context, state) => NoInternetScreen(
+          onPressed: () async {
+            final results = await Connectivity().checkConnectivity();
+            final hasInternet = !results.contains(ConnectivityResult.none);
+
+            if (hasInternet) {
+              if (context.mounted && context.canPop()) {
+                context.pop();
+              }
+            } else {
+              if (context.mounted) {
+                context.showSnack(context.locale!.connectionStillMissing);
+              }
+            }
           },
-          transitionDuration: const Duration(milliseconds: 300),
         ),
       ),
       GoRoute(
