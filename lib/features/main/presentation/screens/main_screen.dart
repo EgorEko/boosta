@@ -19,19 +19,23 @@ import '../widgets/drawer_widget.dart';
 import '../widgets/grid_item_widget.dart';
 
 class MainScreen extends StatelessWidget {
-  const MainScreen({super.key});
+  const MainScreen({super.key, this.deviceId});
+
+  final String? deviceId;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => FormCubit(),
-      child: MainScreenContent(),
+      child: MainScreenContent(deviceId: deviceId),
     );
   }
 }
 
 class MainScreenContent extends StatefulWidget {
-  const MainScreenContent({super.key});
+  const MainScreenContent({super.key, this.deviceId});
+
+  final String? deviceId;
 
   @override
   State<MainScreenContent> createState() => _MainScreenContentState();

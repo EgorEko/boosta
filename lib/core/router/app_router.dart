@@ -11,93 +11,131 @@ import '../../features/services/presentation/screens/privacy_policy.dart';
 import '../../features/services/presentation/screens/terms_of_service.dart';
 import '../../features/splash/presentation/screens/splash_screen.dart';
 import '../blocs/app_settings_cubit/app_settings_cubit.dart';
+import '../blocs/device_id_cubit/device_id_cubit.dart';
 import 'app_routes.dart';
 
-final GoRouter appRouter = GoRouter(
-  initialLocation: AppRoutes.splash.path,
-  redirect: (context, state) {
-    final isFirstRun = context.read<AppSettingsCubit>().isFirstRun;
+class CubitRefreshStream extends ChangeNotifier {
+  CubitRefreshStream(Stream stream) {
+    stream.listen((_) => notifyListeners());
+  }
+}
 
-    if (!isFirstRun && state.matchedLocation == AppRoutes.onboarding.path) {
-      return AppRoutes.main.path;
-    }
-    return null;
-  },
+GoRouter createRouter({required DeviceIdCubit deviceIdCubit}) {
+  return GoRouter(
+    initialLocation: AppRoutes.splash.path,
+    refreshListenable: CubitRefreshStream(deviceIdCubit.stream),
+    redirect: (context, state) {
+      final appSettings = context.read<AppSettingsCubit>();
+      final deviceIdCubit = context.read<DeviceIdCubit>();
 
-  routes: [
-    GoRoute(
-      path: AppRoutes.splash.path,
-      builder: (context, state) => const SplashScreen(),
-    ),
-    GoRoute(
-      path: AppRoutes.main.path,
-      pageBuilder: (context, state) => CustomTransitionPage(
-        key: state.pageKey,
-        child: const MainScreen(),
-        transitionsBuilder: (context, animation, secondary, child) {
-          return FadeTransition(opacity: animation, child: child);
-        },
-        transitionDuration: const Duration(milliseconds: 300),
-      ),
-    ),
-    GoRoute(
-      path: AppRoutes.onboarding.path,
-      pageBuilder: (context, state) => CustomTransitionPage(
-        key: state.pageKey,
-        child: const OnboardingScreen(),
-        transitionsBuilder: (context, animation, secondary, child) {
-          return FadeTransition(opacity: animation, child: child);
-        },
-        transitionDuration: const Duration(milliseconds: 300),
-      ),
-    ),
-    GoRoute(
-      path: AppRoutes.noInternet.path,
-      pageBuilder: (context, state) => CustomTransitionPage(
-        key: state.pageKey,
-        child: const NoInternetScreen(),
-        transitionsBuilder: (context, animation, secondary, child) {
-          return FadeTransition(opacity: animation, child: child);
-        },
-        transitionDuration: const Duration(milliseconds: 300),
-      ),
-    ),
-    GoRoute(
-      path: AppRoutes.hiddenForm.path,
-      pageBuilder: (context, state) {
-        final controller = state.extra as WebViewController;
+      final deviceId = deviceIdCubit.state.deviceId;
+      final isLoading = deviceIdCubit.state.isLoading;
+      final isFirstRun = appSettings.isFirstRun;
 
-        return CustomTransitionPage(
-          opaque: false,
-          barrierColor: Colors.transparent,
-          transitionDuration: Duration.zero,
-          reverseTransitionDuration: Duration.zero,
-          child: HiddenWebViewScreen(controller: controller),
-          transitionsBuilder: (_, _, _, child) => child,
-        );
-      },
-    ),
-    GoRoute(
-      path: AppRoutes.privacyPolicy.path,
-      pageBuilder: (context, state) => CustomTransitionPage(
-        key: state.pageKey,
-        child: const PrivacyPolicy(),
-        transitionsBuilder: (context, animation, secondary, child) {
-          return FadeTransition(opacity: animation, child: child);
-        },
-        transitionDuration: const Duration(milliseconds: 300),
+      if (isLoading) {
+        return AppRoutes.splash.path;
+      }
+
+      if (!isFirstRun && state.matchedLocation == AppRoutes.onboarding.path) {
+        return AppRoutes.main.path;
+      }
+
+      if (state.matchedLocation == AppRoutes.main.path) {
+        final hasIdInUrl = state.uri.queryParameters.containsKey('device_id');
+
+        if (!hasIdInUrl && deviceId != null) {
+          return Uri(
+            path: AppRoutes.main.path,
+            queryParameters: {'device_id': deviceId},
+          ).toString();
+        }
+      }
+
+      return null;
+    },
+
+    routes: [
+      GoRoute(
+        path: AppRoutes.splash.path,
+        builder: (context, state) => const SplashScreen(),
       ),
-    ),
-    GoRoute(
-      path: AppRoutes.termsOfService.path,
-      pageBuilder: (context, state) => CustomTransitionPage(
-        key: state.pageKey,
-        child: const TermsOfService(),
-        transitionsBuilder: (context, animation, secondary, child) {
-          return FadeTransition(opacity: animation, child: child);
+      GoRoute(
+        path: AppRoutes.main.path,
+        pageBuilder: (context, state) {
+          final idFromUrl = state.uri.queryParameters['device_id'];
+
+          return CustomTransitionPage(
+            key: state.pageKey,
+            child: MainScreen(
+              deviceId:
+                  idFromUrl ?? context.read<DeviceIdCubit>().state.deviceId,
+            ),
+            transitionsBuilder: (context, animation, secondary, child) {
+              return FadeTransition(opacity: animation, child: child);
+            },
+            transitionDuration: const Duration(milliseconds: 300),
+          );
         },
-        transitionDuration: const Duration(milliseconds: 300),
       ),
-    ),
-  ],
-);
+      GoRoute(
+        path: AppRoutes.onboarding.path,
+        pageBuilder: (context, state) => CustomTransitionPage(
+          key: state.pageKey,
+          child: const OnboardingScreen(),
+          transitionsBuilder: (context, animation, secondary, child) {
+            return FadeTransition(opacity: animation, child: child);
+          },
+          transitionDuration: const Duration(milliseconds: 300),
+        ),
+      ),
+      GoRoute(
+        path: AppRoutes.noInternet.path,
+        pageBuilder: (context, state) => CustomTransitionPage(
+          key: state.pageKey,
+          child: const NoInternetScreen(),
+          transitionsBuilder: (context, animation, secondary, child) {
+            return FadeTransition(opacity: animation, child: child);
+          },
+          transitionDuration: const Duration(milliseconds: 300),
+        ),
+      ),
+      GoRoute(
+        path: AppRoutes.hiddenForm.path,
+        pageBuilder: (context, state) {
+          final controller = state.extra as WebViewController;
+
+          return CustomTransitionPage(
+            opaque: false,
+            barrierColor: Colors.transparent,
+            transitionDuration: Duration.zero,
+            reverseTransitionDuration: Duration.zero,
+            child: HiddenWebViewScreen(controller: controller),
+            transitionsBuilder: (_, _, _, child) => child,
+          );
+        },
+      ),
+      GoRoute(
+        path: AppRoutes.privacyPolicy.path,
+        pageBuilder: (context, state) => CustomTransitionPage(
+          key: state.pageKey,
+          child: const PrivacyPolicy(),
+          transitionsBuilder: (context, animation, secondary, child) {
+            return FadeTransition(opacity: animation, child: child);
+          },
+          transitionDuration: const Duration(milliseconds: 300),
+        ),
+      ),
+      GoRoute(
+        path: AppRoutes.termsOfService.path,
+        pageBuilder: (context, state) => CustomTransitionPage(
+          key: state.pageKey,
+          child: const TermsOfService(),
+          transitionsBuilder: (context, animation, secondary, child) {
+            return FadeTransition(opacity: animation, child: child);
+          },
+          transitionDuration: const Duration(milliseconds: 300),
+        ),
+      ),
+    ],
+  );
+}
