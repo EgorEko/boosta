@@ -7,6 +7,8 @@ import '../../features/main/presentation/screens/hidden_web_view_screen.dart';
 import '../../features/main/presentation/screens/main_screen.dart';
 import '../../features/no_internet/presentation/screens/no_internet_screen.dart';
 import '../../features/onboarding/presentation/screens/onboarding_screen.dart';
+import '../../features/services/presentation/screens/privacy_policy.dart';
+import '../../features/services/presentation/screens/terms_of_service.dart';
 import '../../features/splash/presentation/screens/splash_screen.dart';
 import '../blocs/app_settings_cubit/app_settings_cubit.dart';
 import 'app_routes.dart';
@@ -74,6 +76,28 @@ final GoRouter appRouter = GoRouter(
           transitionsBuilder: (_, _, _, child) => child,
         );
       },
+    ),
+    GoRoute(
+      path: AppRoutes.privacyPolicy.path,
+      pageBuilder: (context, state) => CustomTransitionPage(
+        key: state.pageKey,
+        child: const PrivacyPolicy(),
+        transitionsBuilder: (context, animation, secondary, child) {
+          return FadeTransition(opacity: animation, child: child);
+        },
+        transitionDuration: const Duration(milliseconds: 300),
+      ),
+    ),
+    GoRoute(
+      path: AppRoutes.termsOfService.path,
+      pageBuilder: (context, state) => CustomTransitionPage(
+        key: state.pageKey,
+        child: const TermsOfService(),
+        transitionsBuilder: (context, animation, secondary, child) {
+          return FadeTransition(opacity: animation, child: child);
+        },
+        transitionDuration: const Duration(milliseconds: 300),
+      ),
     ),
   ],
 );

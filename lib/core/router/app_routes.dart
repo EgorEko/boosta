@@ -3,7 +3,9 @@ enum AppRoutes {
   hiddenForm(path: '/hiddenForm'),
   noInternet(path: '/noInternet'),
   onboarding(path: '/onboarding'),
-  splash(path: '/splash');
+  privacyPolicy(path: '/privacyPolicy'),
+  splash(path: '/splash'),
+  termsOfService(path: '/termsOfService');
 
   final String path;
 

@@ -16,7 +16,7 @@ class ArrowBackButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.w),
+      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
       child: Container(
         width: 48.r,
         height: 48.r,

@@ -18,6 +18,7 @@ class OnboardingBodyWidget extends StatelessWidget {
     this.rightTopIcon,
     this.leftBottomIcon,
     this.rightBottomIcon,
+    this.isReverse = false,
   });
 
   final String firstTitle;
@@ -26,6 +27,7 @@ class OnboardingBodyWidget extends StatelessWidget {
   final Image leftTopIcon;
   final Image? rightTopIcon;
   final Image centerIcon;
+  final bool isReverse;
   final Image? centerRightIcon;
   final Image? leftBottomIcon;
   final Image? rightBottomIcon;
@@ -42,13 +44,15 @@ class OnboardingBodyWidget extends StatelessWidget {
           Text(
             firstTitle.toUpperCase(),
             style: AppTextStyles.primaryFont.copyWith(
-              color: AppColors.primaryColor,
+              color: isReverse ? AppColors.white : AppColors.primaryColor,
             ),
           ),
           8.verticalSpace,
           Text(
             secondTitle.toUpperCase(),
-            style: AppTextStyles.primaryFont.copyWith(color: AppColors.white),
+            style: AppTextStyles.primaryFont.copyWith(
+              color: isReverse ? AppColors.primaryColor : AppColors.white,
+            ),
           ),
           16.verticalSpace,
           Text(

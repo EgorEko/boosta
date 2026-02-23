@@ -101,6 +101,7 @@ class _OnboardingScreenContentState extends State<OnboardingScreenContent>
           leftBottomIcon: Assets.elements.lightningSecond.image(
             fit: BoxFit.cover,
           ),
+          isReverse: true,
         ),
       ),
     ];

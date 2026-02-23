@@ -7,6 +7,7 @@ import 'package:webview_flutter/webview_flutter.dart';
 import '../../../../core/common/utils/extensions.dart';
 import '../../../../core/common/utils/screen_utils.dart';
 import '../../../../core/common/widgets/bg_widgets/bg_widget.dart';
+import '../../../../core/common/widgets/buttons/icons_button.dart';
 import '../../../../core/common/widgets/buttons/primary_button.dart';
 import '../../../../core/router/app_routes.dart';
 import '../../../../core/theme/app_colors.dart';
@@ -14,6 +15,7 @@ import '../../../../core/theme/app_text_styles.dart';
 import '../../../../gen/assets.gen.dart';
 import '../blocs/form_cubit.dart';
 import '../widgets/amoutn_widget.dart';
+import '../widgets/drawer_widget.dart';
 import '../widgets/grid_item_widget.dart';
 
 class MainScreen extends StatelessWidget {
@@ -36,6 +38,7 @@ class MainScreenContent extends StatefulWidget {
 }
 
 class _MainScreenContentState extends State<MainScreenContent> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   bool _didRequestOpen = false;
 
   @override
@@ -78,6 +81,8 @@ class _MainScreenContentState extends State<MainScreenContent> {
         }
       },
       child: Scaffold(
+        key: _scaffoldKey,
+        endDrawer: DrawerWidget(),
         body: BGWidget(
           child: SafeArea(
             child: LayoutBuilder(
@@ -108,13 +113,18 @@ class _MainScreenContentState extends State<MainScreenContent> {
                                 ),
                               ),
                               Spacer(),
-                              Assets.icons.infoIcon.image(
-                                width: 56.w,
-                                height: 56.h,
+                              IconsButton(
+                                onPressed: () =>
+                                    _scaffoldKey.currentState?.openEndDrawer(),
+                                icon: Icon(
+                                  Icons.info_outline_rounded,
+                                  color: AppColors.white,
+                                  size: 24.sp,
+                                ),
                               ),
                             ],
                           ),
-                          (constraints.maxHeight > 900 ? 12 : 24).verticalSpace,
+                          12.verticalSpace,
                           GridView.builder(
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),
@@ -209,8 +219,8 @@ class _MainScreenContentState extends State<MainScreenContent> {
                           ),
                           Spacer(),
                           PrimaryButton(
-                            onPressed:
-                                () {}, //TODO: implement the function of obtaining a loan
+                            onPressed: () {},
+                            //TODO: implement the function of obtaining a loan
                             child: Text(
                               context.locale!.applyForALoan.toUpperCase(),
                               style: AppTextStyles.buttonFont.copyWith(
