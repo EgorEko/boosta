@@ -120,6 +120,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sloganThird => 'Your loan application\nis just a click away.';
 
   @override
+  String get sloganNoInternet =>
+      'You’re currently offline. Turn off Airplane Mode or connect to Wi-Fi to continue.';
+
+  @override
   String get speedy => 'Speedy';
 
   @override
@@ -200,4 +204,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get tryAgain => 'Try again';
+
+  @override
+  String get youOffline => 'You’re Offline';
 }

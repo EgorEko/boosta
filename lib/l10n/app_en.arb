@@ -33,6 +33,7 @@
   "sloganFirst": "Get approved in a flash.\nNo long waits.",
   "sloganSecond": "Just a few steps to\ncomplete your setup.",
   "sloganThird": "Your loan application\nis just a click away.",
+  "sloganNoInternet": "You’re currently offline. Turn off Airplane Mode or connect to Wi-Fi to continue.",
   "speedy": "Speedy",
   "termsOfService": "Terms of service",
   "termsOfServiceCommon": "Terms of service",
@@ -56,5 +57,6 @@
   "termsOfService9": "9. Updates and Legal Framework",
   "termsOfService9Text": "Updates: We may update these Terms. We will notify you of significant changes within the app or via email. Governing Law: These Terms are governed by U.S. law. Any disputes shall be resolved in the appropriate local courts.",
   "today": "Today",
-  "tryAgain": "Try again"
+  "tryAgain": "Try again",
+  "youOffline": "You’re Offline"
 }

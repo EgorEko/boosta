@@ -298,6 +298,12 @@ abstract class AppLocalizations {
   /// **'Your loan application\nis just a click away.'**
   String get sloganThird;
 
+  /// No description provided for @sloganNoInternet.
+  ///
+  /// In en, this message translates to:
+  /// **'You’re currently offline. Turn off Airplane Mode or connect to Wi-Fi to continue.'**
+  String get sloganNoInternet;
+
   /// No description provided for @speedy.
   ///
   /// In en, this message translates to:
@@ -441,6 +447,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Try again'**
   String get tryAgain;
+
+  /// No description provided for @youOffline.
+  ///
+  /// In en, this message translates to:
+  /// **'You’re Offline'**
+  String get youOffline;
 }
 
 class _AppLocalizationsDelegate

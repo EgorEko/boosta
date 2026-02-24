@@ -28,7 +28,7 @@ class NoInternetBodyWidget extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
       child: Column(
         mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
@@ -37,19 +37,16 @@ class NoInternetBodyWidget extends StatelessWidget {
               color: AppColors.primaryColor,
             ),
           ),
+          12.verticalSpace,
           Text(
             secondTitle.toUpperCase(),
             style: AppTextStyles.primaryFont.copyWith(color: AppColors.white),
           ),
-          Padding(
-            padding: EdgeInsets.only(top: 16.w),
-            child: Text(
-              slogan,
-              style: AppTextStyles.secondaryFont.copyWith(
-                color: AppColors.white,
-              ),
-              textAlign: TextAlign.center,
-            ),
+          16.verticalSpace,
+          Text(
+            slogan,
+            style: AppTextStyles.secondaryFont.copyWith(color: AppColors.white),
+            textAlign: TextAlign.center,
           ),
           SizedBox(
             height: context.getHeight * 0.45,

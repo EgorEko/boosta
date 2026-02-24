@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/common/utils/extensions.dart';
 import '../../../../core/common/widgets/bg_widgets/bg_widget.dart';
 import '../../../../core/common/widgets/buttons/primary_button.dart';
+import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/app_text_styles.dart';
 import '../../../../gen/assets.gen.dart';
 import '../widgets/no_internet_body_widget.dart';
 
@@ -37,39 +40,52 @@ class _NoInternetScreenState extends State<NoInternetScreen> {
     return Scaffold(
       body: BGWidget(
         child: SafeArea(
-          child: Center(
-            child: Column(
-              children: [
-                Expanded(
-                  child: Center(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Expanded(
                     child: NoInternetBodyWidget(
-                      firstTitle: context.locale!.speedy.toUpperCase(),
-                      secondTitle: context.locale!.approvals.toUpperCase(),
-                      slogan: context.locale!.sloganFirst,
-                      centerRightIcon: Assets.elements.fluyingDol.image(
+                      firstTitle: context.locale!.youOffline
+                          .split(' ')
+                          .first
+                          .toUpperCase(),
+                      secondTitle: context.locale!.youOffline
+                          .split(' ')
+                          .last
+                          .toUpperCase(),
+                      slogan: context.locale!.sloganNoInternet,
+                      centerRightIcon: Assets.elements.noInternet.image(
                         fit: BoxFit.cover,
                       ),
-                      centerIcon: Assets.elements.portrait.image(
+                      centerIcon: Assets.elements.portraitNoInternet.image(
                         width: double.infinity,
                         fit: BoxFit.contain,
                       ),
                     ),
                   ),
-                ),
-                PrimaryButton(
-                  onPressed: _isChecking ? () {} : _onButtonPressed,
-                  child: _isChecking
-                      ? const SizedBox(
-                          height: 20,
-                          width: 20,
-                          child: CircularProgressIndicator(
-                            strokeWidth: 2,
-                            color: Colors.black,
+                  PrimaryButton(
+                    onPressed: _isChecking ? () {} : _onButtonPressed,
+                    child: _isChecking
+                        ? SizedBox(
+                            height: 20.h,
+                            width: 20.w,
+                            child: CircularProgressIndicator(
+                              strokeWidth: 2,
+                              color: Colors.black,
+                            ),
+                          )
+                        : Text(
+                            context.locale!.tryAgain.toUpperCase(),
+                            style: AppTextStyles.buttonFont.copyWith(
+                              color: AppColors.black,
+                            ),
                           ),
-                        )
-                      : Text(context.locale!.tryAgain.toUpperCase()),
-                ),
-              ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),
