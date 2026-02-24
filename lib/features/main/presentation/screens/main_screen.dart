@@ -1,21 +1,18 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/common/utils/extensions.dart';
-import '../../../../core/common/utils/screen_utils.dart';
 import '../../../../core/common/widgets/bg_widgets/bg_widget.dart';
-import '../../../../core/common/widgets/buttons/icons_button.dart';
-import '../../../../core/common/widgets/buttons/primary_button.dart';
 import '../../../../core/router/app_routes.dart';
-import '../../../../core/theme/app_colors.dart';
-import '../../../../core/theme/app_text_styles.dart';
 import '../../../../gen/assets.gen.dart';
 import '../blocs/form_status_cubit.dart';
-import '../widgets/amoutn_widget.dart';
+import '../widgets/android_body_widget.dart';
 import '../widgets/drawer_widget.dart';
-import '../widgets/grid_item_widget.dart';
+import '../widgets/ios_body_widget.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key, this.deviceId});
@@ -88,161 +85,20 @@ class _MainScreenContentState extends State<MainScreenContent> {
       builder: (context, state) {
         return Scaffold(
           key: _scaffoldKey,
+          resizeToAvoidBottomInset: true,
           endDrawer: DrawerWidget(),
           body: BGWidget(
-            child: SafeArea(
-              child: LayoutBuilder(
-                builder: (context, constraints) {
-                  return IntrinsicHeight(
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 16.w),
-                      child: ConstrainedBox(
-                        constraints: BoxConstraints(
-                          minHeight: constraints.maxHeight,
-                        ),
-                        child: Column(
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  context.locale!.fast.toUpperCase(),
-                                  style: AppTextStyles.menuTitleFont.copyWith(
-                                    color: AppColors.primaryColor,
-                                  ),
-                                ),
-                                12.horizontalSpace,
-                                Text(
-                                  context.locale!.loans.toUpperCase(),
-                                  style: AppTextStyles.menuTitleFont.copyWith(
-                                    color: AppColors.white,
-                                  ),
-                                ),
-                                Spacer(),
-                                IconsButton(
-                                  onPressed: () => _scaffoldKey.currentState
-                                      ?.openEndDrawer(),
-                                  icon: Icon(
-                                    Icons.info_outline_rounded,
-                                    color: AppColors.white,
-                                    size: 24.sp,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            12.verticalSpace,
-                            GridView.builder(
-                              shrinkWrap: true,
-                              physics: const NeverScrollableScrollPhysics(),
-                              itemCount: titles.length,
-                              gridDelegate:
-                                  SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 2,
-                                    crossAxisSpacing:
-                                        (constraints.maxHeight > 900 ? 16 : 32),
-                                    mainAxisSpacing:
-                                        (constraints.maxHeight > 900 ? 16 : 32),
-                                    childAspectRatio:
-                                        ScreenUtils.getAspectRatio(context),
-                                  ),
-                              itemBuilder: (_, index) => GridItemWidget(
-                                title: titles[index],
-                                icon: icons[index],
-                              ),
-                            ),
-                            (constraints.maxHeight > 900 ? 16 : 32)
-                                .verticalSpace,
-                            Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(40.r),
-                                ),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: AppColors.black,
-                                    offset: Offset(10.w, 10.h),
-                                  ),
-                                ],
-                              ),
-
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: AppColors.white,
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(40.r),
-                                  ),
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: 32.w,
-                                    vertical: 16.h,
-                                  ),
-                                  child: Text(
-                                    '\$ 500'.toUpperCase(),
-                                    style: AppTextStyles.buttonFont.copyWith(
-                                      color: AppColors.menuContainerColor,
-                                    ),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            (constraints.maxHeight > 900 ? 6 : 12)
-                                .verticalSpace,
-                            AmountWidget(painted: 2),
-                            (constraints.maxHeight > 900 ? 6 : 12)
-                                .verticalSpace,
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  '\$100',
-                                  style: AppTextStyles.amountCountFont.copyWith(
-                                    color: AppColors.white,
-                                  ),
-                                ),
-                                Text(
-                                  '\$5000',
-                                  style: AppTextStyles.amountCountFont.copyWith(
-                                    color: AppColors.white,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            (constraints.maxHeight > 900 ? 8 : 16)
-                                .verticalSpace,
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Assets.icons.security.image(),
-                                5.horizontalSpace,
-                                Text(
-                                  context.locale!.builtInSecurity,
-                                  style: AppTextStyles.serviceFont.copyWith(
-                                    color: AppColors.white,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Spacer(),
-                            PrimaryButton(
-                              onPressed: () {},
-                              //TODO: implement the function of obtaining a loan
-                              child: Text(
-                                context.locale!.applyForALoan.toUpperCase(),
-                                style: AppTextStyles.buttonFont.copyWith(
-                                  color: AppColors.black,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ),
+            child: Platform.isIOS
+                ? IosBodyWidget(
+                    titles: titles,
+                    scaffoldKey: _scaffoldKey,
+                    icons: icons,
+                  )
+                : AndroidBodyWidget(
+                    titles: titles,
+                    scaffoldKey: _scaffoldKey,
+                    icons: icons,
+                  ),
           ),
         );
       },

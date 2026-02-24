@@ -27,7 +27,7 @@ class GridItemWidget extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(40.r)),
         ),
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 32.w, vertical: 16.h),
+          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

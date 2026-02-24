@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -64,7 +66,9 @@ class OnboardingBodyWidget extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           SizedBox(
-            height: context.getHeight * 0.5,
+            height: Platform.isIOS
+                ? context.getHeight * 0.5
+                : context.getHeight * 0.45,
             child: LayoutBuilder(
               builder: (context, constraints) {
                 final widthFactor = ScreenUtils.getWidthFactor(constraints);
