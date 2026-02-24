@@ -54,6 +54,12 @@ abstract class AppTextStyles {
     letterSpacing: 0.sp,
   );
 
+  static final sumFont = GoogleFonts.googleSansCode(
+    fontSize: 55.sp,
+    fontWeight: FontWeight.w600,
+    letterSpacing: 0.sp,
+  );
+
   static final serviceTitleFont = GoogleFonts.googleSansCode(
     fontSize: 16.sp,
     fontWeight: FontWeight.w900,

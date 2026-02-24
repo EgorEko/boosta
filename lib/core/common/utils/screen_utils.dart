@@ -38,7 +38,7 @@ class ScreenUtils {
       case > 900:
         return 1.75;
       default:
-        return 1.0;
+        return 1.2;
     }
   }
 
@@ -64,8 +64,8 @@ class ScreenUtils {
           buttonSpacing: 12.h,
         ),
         > 600 => SpacingConfig(
-          bodySpacing: 48.h,
-          gridSpacing: 12.h,
+          bodySpacing: 64.h,
+          gridSpacing: 16.h,
           sectionSpacing: 12.h,
           smallSpacing: 6.h,
           buttonSpacing: 8,

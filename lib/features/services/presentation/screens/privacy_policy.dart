@@ -58,6 +58,7 @@ class PrivacyPolicy extends StatelessWidget {
                               color: AppColors.white,
                             ),
                           ),
+                          8.verticalSpace,
                           Text(
                             context.locale!.privacyPolicy
                                 .split(' ')

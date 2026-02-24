@@ -14,7 +14,7 @@ class GridItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: context.getHeight * 0.03,
+      height: context.getHeight * 0.02,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(40.r)),
         boxShadow: [
@@ -27,7 +27,7 @@ class GridItemWidget extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(40.r)),
         ),
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+          padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

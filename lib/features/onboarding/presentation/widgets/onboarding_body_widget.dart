@@ -84,27 +84,27 @@ class OnboardingBodyWidget extends StatelessWidget {
                     children: [
                       Align(alignment: Alignment.center, child: centerIcon),
                       Align(
-                        alignment: const Alignment(-0.8, -0.75),
+                        alignment: const Alignment(-0.8, -0.65),
                         child: leftTopIcon,
                       ),
                       if (rightTopIcon != null)
                         Align(
-                          alignment: const Alignment(0.8, -0.75),
+                          alignment: const Alignment(0.8, -0.6),
                           child: rightTopIcon!,
                         ),
                       if (centerRightIcon != null)
                         Align(
-                          alignment: const Alignment(0.9, -0.5),
+                          alignment: const Alignment(0.92, -0.2),
                           child: centerRightIcon!,
                         ),
                       if (leftBottomIcon != null)
                         Align(
-                          alignment: const Alignment(-0.8, 1.05),
+                          alignment: const Alignment(-0.8, 0.95),
                           child: leftBottomIcon!,
                         ),
                       if (rightBottomIcon != null)
                         Align(
-                          alignment: const Alignment(0.9, 1.05),
+                          alignment: const Alignment(0.9, 0.95),
                           child: rightBottomIcon!,
                         ),
                     ],

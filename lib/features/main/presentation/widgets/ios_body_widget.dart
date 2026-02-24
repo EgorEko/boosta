@@ -83,10 +83,11 @@ class IosBodyWidget extends StatelessWidget {
                     spacing.bodySpacing.verticalSpace,
                     Padding(
                       padding: EdgeInsets.symmetric(
-                        horizontal: context.getHeight * 0.146,
+                        horizontal: context.getWidth * 0.25,
                       ),
                       child: Container(
                         decoration: BoxDecoration(
+                          color: AppColors.white,
                           borderRadius: BorderRadius.all(Radius.circular(40.r)),
                           boxShadow: [
                             BoxShadow(
@@ -95,25 +96,17 @@ class IosBodyWidget extends StatelessWidget {
                             ),
                           ],
                         ),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: AppColors.white,
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(40.r),
-                            ),
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 16.w,
+                            vertical: 4.h,
                           ),
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: 32.w,
-                              vertical: 16.h,
+                          child: Text(
+                            '\$500'.toUpperCase(),
+                            style: AppTextStyles.sumFont.copyWith(
+                              color: AppColors.menuContainerColor,
                             ),
-                            child: Text(
-                              '\$ 500'.toUpperCase(),
-                              style: AppTextStyles.buttonFont.copyWith(
-                                color: AppColors.menuContainerColor,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
+                            textAlign: TextAlign.center,
                           ),
                         ),
                       ),
