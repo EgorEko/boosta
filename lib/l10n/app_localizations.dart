@@ -274,6 +274,12 @@ abstract class AppLocalizations {
   /// **'We may update this Privacy Policy periodically. In the event of significant changes, we will notify you through an in-app alert or via email.'**
   String get privacyPolicy8Text;
 
+  /// No description provided for @serviceDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Service Description'**
+  String get serviceDescription;
+
   /// No description provided for @setup.
   ///
   /// In en, this message translates to:

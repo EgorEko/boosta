@@ -48,9 +48,7 @@ class FieldContainer extends StatelessWidget {
                   Expanded(
                     child: Text(
                       title,
-                      style: AppTextStyles.serviceTitleFont.copyWith(
-                        height: 1.0,
-                      ),
+                      style: AppTextStyles.serviceTitleFont,
                       softWrap: true,
                       maxLines: 2,
                     ),

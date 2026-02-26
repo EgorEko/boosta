@@ -1,5 +1,4 @@
-import 'dart:ui';
-
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -60,15 +59,18 @@ abstract class AppTextStyles {
     letterSpacing: 0.sp,
   );
 
-  static final serviceTitleFont = GoogleFonts.googleSansCode(
+  static final serviceTitleFont = TextStyle(
+    fontFamily: 'Avenir',
     fontSize: 16.sp,
     fontWeight: FontWeight.w900,
-    letterSpacing: 0.sp,
+    letterSpacing: 0,
+    height: 1.0,
   );
 
-  static final serviceTextFont = GoogleFonts.googleSansCode(
+  static final serviceTextFont = TextStyle(
+    fontFamily: 'Avenir',
     fontSize: 14.sp,
     fontWeight: FontWeight.w400,
-    letterSpacing: 0.sp,
+    letterSpacing: 0,
   );
 }

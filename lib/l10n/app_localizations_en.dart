@@ -108,6 +108,9 @@ class AppLocalizationsEn extends AppLocalizations {
       'We may update this Privacy Policy periodically. In the event of significant changes, we will notify you through an in-app alert or via email.';
 
   @override
+  String get serviceDescription => 'Service Description';
+
+  @override
   String get setup => 'Setup';
 
   @override
