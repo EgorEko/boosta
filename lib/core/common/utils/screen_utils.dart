@@ -63,10 +63,8 @@ class ScreenUtils {
     final screenWidth = context.getWidth;
 
     switch (screenWidth) {
-      case > 900:
-        return 420;
       default:
-        return screenWidth * 0.85;
+        return screenWidth * 0.76;
     }
   }
 
