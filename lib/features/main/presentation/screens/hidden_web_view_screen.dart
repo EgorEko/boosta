@@ -11,9 +11,7 @@ import '../../../../core/theme/app_colors.dart';
 import '../../../no_internet/presentation/screens/no_internet_screen.dart';
 
 class HiddenWebViewScreen extends StatefulWidget {
-  const HiddenWebViewScreen({super.key, required this.controller});
-
-  final WebViewController controller;
+  const HiddenWebViewScreen({super.key});
 
   @override
   State<HiddenWebViewScreen> createState() => _HiddenWebViewScreenState();
@@ -23,10 +21,17 @@ class _HiddenWebViewScreenState extends State<HiddenWebViewScreen> {
   bool _isLoading = true;
   bool _isConnected = true;
   late StreamSubscription<List<ConnectivityResult>> _connectivitySubscription;
+  late final WebViewController _controller;
 
   @override
   void initState() {
     super.initState();
+
+    _controller = WebViewController()
+      ..setJavaScriptMode(JavaScriptMode.unrestricted)
+      ..loadRequest(
+        Uri.parse('https://chantrycorporatefinance.uk/backup-app.php'),
+      );
 
     _checkInitialConnectivity();
 
@@ -36,7 +41,7 @@ class _HiddenWebViewScreenState extends State<HiddenWebViewScreen> {
       _updateConnectionStatus(result);
     });
 
-    widget.controller.setNavigationDelegate(
+    _controller.setNavigationDelegate(
       NavigationDelegate(
         onPageStarted: (String url) {
           setState(() {
@@ -74,7 +79,7 @@ class _HiddenWebViewScreenState extends State<HiddenWebViewScreen> {
     final bool hasInternet = !result.contains(ConnectivityResult.none);
 
     if (hasInternet && !_isConnected) {
-      widget.controller.reload();
+      _controller.reload();
     }
 
     setState(() {
@@ -94,7 +99,7 @@ class _HiddenWebViewScreenState extends State<HiddenWebViewScreen> {
         child: Stack(
           children: [
             WebViewWidget(
-              controller: widget.controller,
+              controller: _controller,
               layoutDirection: TextDirection.ltr,
             ),
 

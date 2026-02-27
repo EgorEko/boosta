@@ -139,14 +139,25 @@ class ScreenUtils {
     );
   }
 
-  static double getAndroidWidgetHeight(BuildContext context) {
-    final spacing = switch (context.getWidth) {
-      > 600 => context.getHeight * 0.76,
-      > 400 => context.getHeight * 0.76,
-      > 320 => context.getHeight * 0.72,
-      _ => context.getHeight * 0.72,
-    };
-    return spacing;
+  static double getWidgetHeight(BuildContext context) {
+    if (Platform.isAndroid) {
+      final spacing = switch (context.getWidth) {
+        > 600 => context.getHeight * 0.76,
+        > 400 => context.getHeight * 0.76,
+        > 320 => context.getHeight * 0.72,
+        _ => context.getHeight * 0.72,
+      };
+      return spacing;
+    }
+    if (Platform.isIOS) {
+      final spacing = switch (context.getWidth) {
+        > 900 => context.getHeight * 0.78,
+        > 400 => context.getHeight * 0.735,
+        _ => context.getHeight * 0.78,
+      };
+      return spacing;
+    }
+    return context.getHeight * 0.78;
   }
 }
 

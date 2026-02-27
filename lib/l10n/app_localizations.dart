@@ -133,13 +133,13 @@ abstract class AppLocalizations {
   /// No description provided for @customAmounts.
   ///
   /// In en, this message translates to:
-  /// **'Custom Amounts'**
+  /// **'Custom\nAmounts'**
   String get customAmounts;
 
   /// No description provided for @dataSecurity.
   ///
   /// In en, this message translates to:
-  /// **'Data Security'**
+  /// **'Data\nSecurity'**
   String get dataSecurity;
 
   /// No description provided for @fast.
@@ -151,7 +151,7 @@ abstract class AppLocalizations {
   /// No description provided for @fastPayouts.
   ///
   /// In en, this message translates to:
-  /// **'Fast Payouts'**
+  /// **'Fast\nPayouts'**
   String get fastPayouts;
 
   /// No description provided for @loans.
@@ -163,7 +163,7 @@ abstract class AppLocalizations {
   /// No description provided for @noExtraCharges.
   ///
   /// In en, this message translates to:
-  /// **'no extra Charges'**
+  /// **'no extra\nCharges'**
   String get noExtraCharges;
 
   /// No description provided for @privacyPolicy.

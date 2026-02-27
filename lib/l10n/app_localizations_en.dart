@@ -27,22 +27,22 @@ class AppLocalizationsEn extends AppLocalizations {
   String get continueButton => 'Continue';
 
   @override
-  String get customAmounts => 'Custom Amounts';
+  String get customAmounts => 'Custom\nAmounts';
 
   @override
-  String get dataSecurity => 'Data Security';
+  String get dataSecurity => 'Data\nSecurity';
 
   @override
   String get fast => 'Fast';
 
   @override
-  String get fastPayouts => 'Fast Payouts';
+  String get fastPayouts => 'Fast\nPayouts';
 
   @override
   String get loans => 'Loans';
 
   @override
-  String get noExtraCharges => 'no extra Charges';
+  String get noExtraCharges => 'no extra\nCharges';
 
   @override
   String get privacyPolicy => 'Privacy policy';

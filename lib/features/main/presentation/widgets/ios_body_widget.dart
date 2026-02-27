@@ -31,9 +31,7 @@ class IosBodyWidget extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.w),
               child: SizedBox(
-                height: context.getWidth > 400 && context.getWidth < 900
-                    ? context.getHeight * 0.735
-                    : context.getHeight * 0.78,
+                height: ScreenUtils.getWidgetHeight(context),
                 child: Column(
                   children: [
                     Row(

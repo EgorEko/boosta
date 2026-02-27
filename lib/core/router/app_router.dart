@@ -2,7 +2,6 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 
 import '../../features/main/presentation/screens/hidden_web_view_screen.dart';
 import '../../features/main/presentation/screens/main_screen.dart';
@@ -107,14 +106,12 @@ GoRouter createRouter({required DeviceIdCubit deviceIdCubit}) {
       GoRoute(
         path: AppRoutes.hiddenForm.path,
         pageBuilder: (context, state) {
-          final controller = state.extra as WebViewController;
-
           return CustomTransitionPage(
             opaque: false,
             barrierColor: Colors.transparent,
             transitionDuration: Duration.zero,
             reverseTransitionDuration: Duration.zero,
-            child: HiddenWebViewScreen(controller: controller),
+            child: HiddenWebViewScreen(),
             transitionsBuilder: (_, _, _, child) => child,
           );
         },

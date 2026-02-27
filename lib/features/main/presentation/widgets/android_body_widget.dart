@@ -34,7 +34,7 @@ class AndroidBodyWidget extends StatelessWidget {
             vertical: !isMediumScreen ? 6.w : 16.h,
           ),
           child: SizedBox(
-            height: ScreenUtils.getAndroidWidgetHeight(context),
+            height: ScreenUtils.getWidgetHeight(context),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
