@@ -80,7 +80,6 @@ class TermsOfService extends StatelessWidget {
                       style: AppTextStyles.serviceTextFont,
                     ),
                     isBordered: false,
-                    onPressed: () {},
                     child: Transform.rotate(
                       angle: -45,
                       child: Icon(Icons.arrow_forward, size: 24.r),
@@ -98,9 +97,8 @@ class TermsOfService extends StatelessWidget {
                           index.toString(),
                         ),
                         bgColor: AppColors.white,
-                        onPressed: () {},
                         child: Transform.rotate(
-                          angle: 45,
+                          angle: -45,
                           child: Icon(Icons.arrow_forward, size: 24.r),
                         ),
                       );

@@ -81,7 +81,6 @@ class PrivacyPolicy extends StatelessWidget {
                       style: AppTextStyles.serviceTextFont,
                     ),
                     isBordered: false,
-                    onPressed: () {},
                     child: SizedBox(
                       width: 56.w,
                       height: 56.h,
@@ -103,12 +102,11 @@ class PrivacyPolicy extends StatelessWidget {
                           index.toString(),
                         ),
                         bgColor: AppColors.white,
-                        onPressed: () {},
                         child: SizedBox(
                           width: 56.w,
                           height: 56.h,
                           child: Transform.rotate(
-                            angle: 0.785398,
+                            angle: -45,
                             child: Icon(Icons.arrow_forward, size: 24.sp),
                           ),
                         ),

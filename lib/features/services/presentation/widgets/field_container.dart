@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_text_styles.dart';
 
-class FieldContainer extends StatelessWidget {
+class FieldContainer extends StatefulWidget {
   const FieldContainer({
     super.key,
     this.color = AppColors.black,
@@ -12,7 +12,6 @@ class FieldContainer extends StatelessWidget {
     this.isBordered = true,
     required this.title,
     required this.text,
-    required this.onPressed,
     required this.child,
   });
 
@@ -21,8 +20,20 @@ class FieldContainer extends StatelessWidget {
   final Color color;
   final Color bgColor;
   final bool isBordered;
-  final VoidCallback onPressed;
   final Widget child;
+
+  @override
+  State<FieldContainer> createState() => _FieldContainerState();
+}
+
+class _FieldContainerState extends State<FieldContainer> {
+  bool _isExpanded = false;
+
+  void _toggleExpand() {
+    setState(() {
+      _isExpanded = !_isExpanded;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,21 +58,21 @@ class FieldContainer extends StatelessWidget {
                 children: [
                   Expanded(
                     child: Text(
-                      title,
+                      widget.title,
                       style: AppTextStyles.serviceTitleFont,
                       softWrap: true,
                       maxLines: 2,
                     ),
                   ),
                   InkWell(
-                    onTap: onPressed,
+                    onTap: _toggleExpand,
                     child: Container(
                       width: 36.w,
                       height: 36.h,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: bgColor,
-                        border: isBordered
+                        color: widget.bgColor,
+                        border: widget.isBordered
                             ? BoxBorder.all(color: AppColors.black)
                             : null,
                         boxShadow: [
@@ -71,12 +82,26 @@ class FieldContainer extends StatelessWidget {
                           ),
                         ],
                       ),
-                      child: child,
+                      child: AnimatedRotation(
+                        duration: const Duration(milliseconds: 300),
+                        turns: _isExpanded ? 0.25 : 0,
+                        child: widget.child,
+                      ),
                     ),
                   ),
                 ],
               ),
-              text,
+              AnimatedCrossFade(
+                firstChild: const SizedBox.shrink(),
+                secondChild: Padding(
+                  padding: EdgeInsets.only(top: 12.h),
+                  child: widget.text,
+                ),
+                crossFadeState: _isExpanded
+                    ? CrossFadeState.showSecond
+                    : CrossFadeState.showFirst,
+                duration: const Duration(milliseconds: 300),
+              ),
             ],
           ),
         ),
