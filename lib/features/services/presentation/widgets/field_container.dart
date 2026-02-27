@@ -39,34 +39,34 @@ class _FieldContainerState extends State<FieldContainer> {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
-      child: Container(
-        width: double.infinity,
-        decoration: BoxDecoration(
-          color: AppColors.white,
-          borderRadius: BorderRadius.all(Radius.circular(40.r)),
-          boxShadow: [
-            BoxShadow(color: AppColors.black, offset: Offset(10.w, 10.h)),
-          ],
-        ),
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: Text(
-                      widget.title,
-                      style: AppTextStyles.serviceTitleFont,
-                      softWrap: true,
-                      maxLines: 2,
+      child: InkWell(
+        onTap: _toggleExpand,
+        child: Container(
+          width: double.infinity,
+          decoration: BoxDecoration(
+            color: AppColors.white,
+            borderRadius: BorderRadius.all(Radius.circular(40.r)),
+            boxShadow: [
+              BoxShadow(color: AppColors.black, offset: Offset(10.w, 10.h)),
+            ],
+          ),
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: Text(
+                        widget.title,
+                        style: AppTextStyles.serviceTitleFont,
+                        softWrap: true,
+                        maxLines: 2,
+                      ),
                     ),
-                  ),
-                  InkWell(
-                    onTap: _toggleExpand,
-                    child: Container(
+                    Container(
                       width: 36.w,
                       height: 36.h,
                       decoration: BoxDecoration(
@@ -88,21 +88,21 @@ class _FieldContainerState extends State<FieldContainer> {
                         child: widget.child,
                       ),
                     ),
-                  ),
-                ],
-              ),
-              AnimatedCrossFade(
-                firstChild: const SizedBox.shrink(),
-                secondChild: Padding(
-                  padding: EdgeInsets.only(top: 12.h),
-                  child: widget.text,
+                  ],
                 ),
-                crossFadeState: _isExpanded
-                    ? CrossFadeState.showSecond
-                    : CrossFadeState.showFirst,
-                duration: const Duration(milliseconds: 300),
-              ),
-            ],
+                AnimatedCrossFade(
+                  firstChild: const SizedBox.shrink(),
+                  secondChild: Padding(
+                    padding: EdgeInsets.only(top: 12.h),
+                    child: widget.text,
+                  ),
+                  crossFadeState: _isExpanded
+                      ? CrossFadeState.showSecond
+                      : CrossFadeState.showFirst,
+                  duration: const Duration(milliseconds: 300),
+                ),
+              ],
+            ),
           ),
         ),
       ),
