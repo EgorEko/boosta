@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/common/utils/extensions.dart';
@@ -6,8 +7,10 @@ import '../../../../core/common/utils/screen_utils.dart';
 import '../../../../core/common/widgets/buttons/icons_button.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_text_styles.dart';
+import '../blocs/amount_cubit.dart';
 import 'amoutn_widget.dart';
 import 'grid_item_widget.dart';
+import 'sum_widget.dart';
 
 class IosBodyWidget extends StatelessWidget {
   const IosBodyWidget({
@@ -79,52 +82,29 @@ class IosBodyWidget extends StatelessWidget {
                       ),
                     ),
                     spacing.bodySpacing.verticalSpace,
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: context.getWidth * 0.25,
-                      ),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: AppColors.white,
-                          borderRadius: BorderRadius.all(Radius.circular(40.r)),
-                          boxShadow: [
-                            BoxShadow(
-                              color: AppColors.black,
-                              offset: Offset(10.w, 10.h),
-                            ),
-                          ],
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 16.w,
-                            vertical: 4.h,
-                          ),
-                          child: Text(
-                            '\$500'.toUpperCase(),
-                            style: AppTextStyles.sumFont.copyWith(
-                              color: AppColors.menuContainerColor,
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                      ),
-                    ),
+                    SumWidget(),
                     spacing.gridSpacing.verticalSpace,
-                    AmountWidget(painted: 2),
+                    AmountWidget(),
                     spacing.smallSpacing.verticalSpace,
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          '\$100',
-                          style: AppTextStyles.amountCountFont.copyWith(
-                            color: AppColors.white,
+                        InkWell(
+                          onTap: () => context.read<AmountCubit>().decrease(),
+                          child: Text(
+                            '\$100',
+                            style: AppTextStyles.amountCountFont.copyWith(
+                              color: AppColors.white,
+                            ),
                           ),
                         ),
-                        Text(
-                          '\$5000',
-                          style: AppTextStyles.amountCountFont.copyWith(
-                            color: AppColors.white,
+                        InkWell(
+                          onTap: () => context.read<AmountCubit>().increase(),
+                          child: Text(
+                            '\$5000',
+                            style: AppTextStyles.amountCountFont.copyWith(
+                              color: AppColors.white,
+                            ),
                           ),
                         ),
                       ],

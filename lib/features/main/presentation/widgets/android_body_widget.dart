@@ -8,6 +8,7 @@ import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_text_styles.dart';
 import 'amoutn_widget.dart';
 import 'grid_item_widget.dart';
+import 'sum_widget.dart';
 
 class AndroidBodyWidget extends StatelessWidget {
   const AndroidBodyWidget({
@@ -81,39 +82,9 @@ class AndroidBodyWidget extends StatelessWidget {
                       GridItemWidget(title: titles[index], icon: icons[index]),
                 ),
                 spacing.bodySpacing.verticalSpace,
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(40.r)),
-                    boxShadow: [
-                      BoxShadow(
-                        color: AppColors.black,
-                        offset: Offset(10.w, 10.h),
-                      ),
-                    ],
-                  ),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: AppColors.white,
-                      borderRadius: BorderRadius.all(Radius.circular(40.r)),
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: !isMediumScreen ? 8.w : 32.w,
-                        vertical: !isMediumScreen ? 8.w : 16.w,
-                      ),
-                      child: Text(
-                        '\$ 500'.toUpperCase(),
-                        style: AppTextStyles.buttonFont.copyWith(
-                          color: AppColors.menuContainerColor,
-                          fontSize: !isMediumScreen ? 16.sp : 20.sp,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  ),
-                ),
+                SumWidget(isMediumScreen: isMediumScreen),
                 spacing.smallSpacing.verticalSpace,
-                AmountWidget(painted: 2),
+                AmountWidget(),
                 spacing.smallSpacing.verticalSpace,
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

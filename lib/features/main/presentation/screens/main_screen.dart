@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
@@ -11,6 +12,7 @@ import '../../../../core/router/app_routes.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_text_styles.dart';
 import '../../../../gen/assets.gen.dart';
+import '../blocs/amount_cubit.dart';
 import '../widgets/android_body_widget.dart';
 import '../widgets/drawer_widget.dart';
 import '../widgets/ios_body_widget.dart';
@@ -20,7 +22,10 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MainScreenContent();
+    return BlocProvider(
+      create: (context) => AmountCubit(),
+      child: MainScreenContent(),
+    );
   }
 }
 
