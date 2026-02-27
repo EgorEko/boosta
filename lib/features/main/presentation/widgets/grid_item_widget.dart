@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/common/utils/extensions.dart';
@@ -8,12 +10,12 @@ class GridItemWidget extends StatelessWidget {
   const GridItemWidget({super.key, required this.title, required this.icon});
 
   final String title;
-  final Widget icon;
+  final ImageProvider icon;
 
   @override
   Widget build(BuildContext context) {
     final bool isMediumScreen =
-        context.getWidth > 320 && context.getWidth < 400;
+        Platform.isAndroid && context.getWidth > 320 && context.getWidth < 400;
     final bool isLargeScreen = context.getWidth > 600;
     return Container(
       decoration: BoxDecoration(
@@ -57,7 +59,18 @@ class GridItemWidget extends StatelessWidget {
           BoxShadow(color: AppColors.primaryColor, offset: Offset(4.w, 4.h)),
         ],
       ),
-      child: Center(child: icon),
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 6.h),
+        child: Center(
+          child: Image(
+            image: icon,
+            width: 24.w,
+            height: 24.h,
+            gaplessPlayback: true,
+            fit: BoxFit.contain,
+          ),
+        ),
+      ),
     );
   }
 }

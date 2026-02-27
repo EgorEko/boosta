@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'app_colors.dart';
 
 abstract class AppTextStyles {
-  static final primaryFont =
-      GoogleFonts.googleSansCode(
+  static TextStyle primaryFont =
+      TextStyle(
+        fontFamily: 'GoogleSansCode',
         fontSize: 55.sp,
         fontWeight: FontWeight.w700,
         letterSpacing: 0.sp,
@@ -16,50 +16,57 @@ abstract class AppTextStyles {
         shadows: [Shadow(color: AppColors.black, offset: Offset(4.w, 4.h))],
       );
 
-  static final menuTitleFont = GoogleFonts.googleSansCode(
+  static TextStyle menuTitleFont = TextStyle(
+    fontFamily: 'GoogleSansCode',
     fontSize: 40.sp,
     fontWeight: FontWeight.w700,
     letterSpacing: 0.sp,
     shadows: [Shadow(color: AppColors.black, offset: Offset(4.w, 4.h))],
   );
 
-  static final secondaryFont = GoogleFonts.googleSansCode(
+  static TextStyle secondaryFont = TextStyle(
+    fontFamily: 'GoogleSansCode',
     fontSize: 18.sp,
     fontWeight: FontWeight.w400,
     letterSpacing: 0.sp,
     height: 1.0,
   );
 
-  static final buttonFont = GoogleFonts.googleSansCode(
+  static TextStyle buttonFont = TextStyle(
+    fontFamily: 'GoogleSansCode',
     fontSize: 20.sp,
     fontWeight: FontWeight.w800,
     letterSpacing: 0.sp,
   );
 
-  static final amountFont = GoogleFonts.googleSansCode(
+  static TextStyle amountFont = TextStyle(
+    fontFamily: 'GoogleSansCode',
     fontSize: 55.sp,
     fontWeight: FontWeight.w600,
     letterSpacing: 0.sp,
   );
 
-  static final amountCountFont = GoogleFonts.googleSansCode(
+  static TextStyle amountCountFont = TextStyle(
+    fontFamily: 'GoogleSansCode',
     fontSize: 16.sp,
     fontWeight: FontWeight.w600,
     letterSpacing: 0.sp,
   );
-  static final serviceFont = GoogleFonts.googleSansCode(
+  static TextStyle serviceFont = TextStyle(
+    fontFamily: 'GoogleSansCode',
     fontSize: 14.sp,
     fontWeight: FontWeight.w500,
     letterSpacing: 0.sp,
   );
 
-  static final sumFont = GoogleFonts.googleSansCode(
+  static TextStyle sumFont = TextStyle(
+    fontFamily: 'GoogleSansCode',
     fontSize: 55.sp,
     fontWeight: FontWeight.w600,
     letterSpacing: 0.sp,
   );
 
-  static final serviceTitleFont = TextStyle(
+  static TextStyle serviceTitleFont = TextStyle(
     fontFamily: 'Avenir',
     fontSize: 16.sp,
     fontWeight: FontWeight.w900,
@@ -67,7 +74,7 @@ abstract class AppTextStyles {
     height: 1.0,
   );
 
-  static final serviceTextFont = TextStyle(
+  static TextStyle serviceTextFont = TextStyle(
     fontFamily: 'Avenir',
     fontSize: 14.sp,
     fontWeight: FontWeight.w400,

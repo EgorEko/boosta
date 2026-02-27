@@ -16,23 +16,19 @@ import '../widgets/drawer_widget.dart';
 import '../widgets/ios_body_widget.dart';
 
 class MainScreen extends StatelessWidget {
-  const MainScreen({super.key, this.deviceId});
-
-  final String? deviceId;
+  const MainScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => FormStatusCubit(),
-      child: MainScreenContent(deviceId: deviceId),
+      child: MainScreenContent(),
     );
   }
 }
 
 class MainScreenContent extends StatefulWidget {
-  const MainScreenContent({super.key, this.deviceId});
-
-  final String? deviceId;
+  const MainScreenContent({super.key});
 
   @override
   State<MainScreenContent> createState() => _MainScreenContentState();
@@ -63,11 +59,11 @@ class _MainScreenContentState extends State<MainScreenContent> {
       context.locale!.fastPayouts,
     ];
 
-    final List<Image> icons = [
-      Assets.elements.fluentMoney16Filled.image(width: 24.w, height: 24.h),
-      Assets.elements.fluentDataPie24Regular.image(width: 24.w, height: 24.h),
-      Assets.elements.mingcuteSafeLockLine.image(width: 24.w, height: 24.h),
-      Assets.elements.mdiClockFast.image(width: 24.w, height: 24.h),
+    final List<ImageProvider> icons = [
+      Assets.elements.fluentMoney16Filled.provider(),
+      Assets.elements.fluentDataPie24Regular.provider(),
+      Assets.elements.mingcuteSafeLockLine.provider(),
+      Assets.elements.mdiClockFast.provider(),
     ];
 
     return BlocBuilder<FormStatusCubit, FormStatusState>(

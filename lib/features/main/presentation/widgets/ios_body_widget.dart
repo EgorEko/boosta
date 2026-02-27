@@ -18,7 +18,7 @@ class IosBodyWidget extends StatelessWidget {
   });
 
   final List<String> titles;
-  final List<Image> icons;
+  final List<ImageProvider> icons;
   final GlobalKey<ScaffoldState> scaffoldKey;
 
   @override

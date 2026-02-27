@@ -64,18 +64,13 @@ GoRouter createRouter({required DeviceIdCubit deviceIdCubit}) {
       GoRoute(
         path: AppRoutes.main.path,
         pageBuilder: (context, state) {
-          final idFromUrl = state.uri.queryParameters['device_id'];
-
           return CustomTransitionPage(
             key: state.pageKey,
-            child: MainScreen(
-              deviceId:
-                  idFromUrl ?? context.read<DeviceIdCubit>().state.deviceId,
-            ),
+            child: const MainScreen(),
             transitionsBuilder: (context, animation, secondary, child) {
               return FadeTransition(opacity: animation, child: child);
             },
-            transitionDuration: const Duration(milliseconds: 300),
+            transitionDuration: const Duration(milliseconds: 50),
           );
         },
       ),
