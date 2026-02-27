@@ -6,11 +6,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-import '../../../../core/common/utils/extensions.dart';
 import '../../../../core/common/widgets/buttons/arrow_back_button.dart';
-import '../../../../core/common/widgets/buttons/primary_button.dart';
 import '../../../../core/theme/app_colors.dart';
-import '../../../../core/theme/app_text_styles.dart';
 import '../../../no_internet/presentation/screens/no_internet_screen.dart';
 
 class HiddenWebViewScreen extends StatefulWidget {
@@ -119,18 +116,6 @@ class _HiddenWebViewScreenState extends State<HiddenWebViewScreen> {
                 ),
               ),
           ],
-        ),
-      ),
-      bottomNavigationBar: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 20.h),
-        child: PrimaryButton(
-          onPressed: () {
-            // TODO: implement logic
-          },
-          child: Text(
-            context.locale!.applyForALoan.toUpperCase(),
-            style: AppTextStyles.buttonFont.copyWith(color: AppColors.black),
-          ),
         ),
       ),
     );

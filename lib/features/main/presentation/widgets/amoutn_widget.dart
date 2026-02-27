@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../core/common/utils/extensions.dart';
 import '../../../../core/theme/app_colors.dart';
 
 class AmountWidget extends StatelessWidget {
@@ -10,11 +11,12 @@ class AmountWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bool isSmallScreen = context.getWidth <= 320;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
       child: SizedBox(
         width: double.infinity,
-        height: 20.h,
+        height: isSmallScreen ? 8.w : 20.h,
         child: Row(
           children: List.generate(7, (index) {
             final bool isPainted = index <= painted - 1;

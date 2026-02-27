@@ -4,10 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/common/utils/extensions.dart';
 import '../../../../core/common/utils/screen_utils.dart';
 import '../../../../core/common/widgets/buttons/icons_button.dart';
-import '../../../../core/common/widgets/buttons/primary_button.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_text_styles.dart';
-import '../../../../gen/assets.gen.dart';
 import 'amoutn_widget.dart';
 import 'grid_item_widget.dart';
 
@@ -28,13 +26,15 @@ class IosBodyWidget extends StatelessWidget {
     return SafeArea(
       child: LayoutBuilder(
         builder: (context, constraints) {
-          final spacing = ScreenUtils.getPlatformSpacing(constraints);
+          final spacing = ScreenUtils.getPlatformSpacing(context);
           return IntrinsicHeight(
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.w),
               child: SizedBox(
-                height: context.getHeight,
-                child: ListView(
+                height: context.getWidth > 400 && context.getWidth < 900
+                    ? context.getHeight * 0.735
+                    : context.getHeight * 0.78,
+                child: Column(
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -113,7 +113,7 @@ class IosBodyWidget extends StatelessWidget {
                     ),
                     spacing.gridSpacing.verticalSpace,
                     AmountWidget(painted: 2),
-                    spacing.gridSpacing.verticalSpace,
+                    spacing.smallSpacing.verticalSpace,
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -130,31 +130,6 @@ class IosBodyWidget extends StatelessWidget {
                           ),
                         ),
                       ],
-                    ),
-                    spacing.gridSpacing.verticalSpace,
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Assets.icons.security.image(),
-                        5.horizontalSpace,
-                        Text(
-                          context.locale!.builtInSecurity,
-                          style: AppTextStyles.serviceFont.copyWith(
-                            color: AppColors.white,
-                          ),
-                        ),
-                      ],
-                    ),
-                    spacing.smallSpacing.verticalSpace,
-                    PrimaryButton(
-                      onPressed: () {},
-                      //TODO: implement the function of obtaining a loan
-                      child: Text(
-                        context.locale!.applyForALoan.toUpperCase(),
-                        style: AppTextStyles.buttonFont.copyWith(
-                          color: AppColors.black,
-                        ),
-                      ),
                     ),
                   ],
                 ),

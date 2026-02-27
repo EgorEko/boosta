@@ -3,11 +3,12 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../../../core/common/utils/extensions.dart';
 import '../../../../core/common/widgets/bg_widgets/bg_widget.dart';
-import '../../../../core/router/app_routes.dart';
+import '../../../../core/common/widgets/buttons/primary_button.dart';
+import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/app_text_styles.dart';
 import '../../../../gen/assets.gen.dart';
 import '../blocs/form_status_cubit.dart';
 import '../widgets/android_body_widget.dart';
@@ -69,36 +70,54 @@ class _MainScreenContentState extends State<MainScreenContent> {
       Assets.elements.mdiClockFast.image(width: 24.w, height: 24.h),
     ];
 
-    return BlocConsumer<FormStatusCubit, FormStatusState>(
-      listenWhen: (prev, curr) => curr.shouldOpen && !prev.shouldOpen,
-      listener: (context, state) async {
-        if (state.controller != null) {
-          await context.push(
-            AppRoutes.hiddenForm.path,
-            extra: state.controller,
-          );
-          if (context.mounted) {
-            context.read<FormStatusCubit>().formClosed();
-          }
-        }
-      },
+    return BlocBuilder<FormStatusCubit, FormStatusState>(
       builder: (context, state) {
         return Scaffold(
           key: _scaffoldKey,
           resizeToAvoidBottomInset: true,
           endDrawer: DrawerWidget(),
           body: BGWidget(
-            child: Platform.isIOS
-                ? IosBodyWidget(
-                    titles: titles,
-                    scaffoldKey: _scaffoldKey,
-                    icons: icons,
-                  )
-                : AndroidBodyWidget(
-                    titles: titles,
-                    scaffoldKey: _scaffoldKey,
-                    icons: icons,
+            child: SafeArea(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Platform.isIOS
+                      ? IosBodyWidget(
+                          titles: titles,
+                          scaffoldKey: _scaffoldKey,
+                          icons: icons,
+                        )
+                      : AndroidBodyWidget(
+                          titles: titles,
+                          scaffoldKey: _scaffoldKey,
+                          icons: icons,
+                        ),
+                  Spacer(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Assets.icons.security.image(),
+                      5.horizontalSpace,
+                      Text(
+                        context.locale!.builtInSecurity,
+                        style: AppTextStyles.serviceFont.copyWith(
+                          color: AppColors.white,
+                        ),
+                      ),
+                    ],
                   ),
+                  PrimaryButton(
+                    onPressed: () {},
+                    child: Text(
+                      context.locale!.applyForALoan.toUpperCase(),
+                      style: AppTextStyles.buttonFont.copyWith(
+                        color: AppColors.black,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
         );
       },
